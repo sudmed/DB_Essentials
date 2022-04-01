@@ -1,4 +1,6 @@
 #######
+# Powershell
+#######
 $password = Read-Host "Enter a Password" -AsSecureString
 $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
 $password = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
@@ -7,6 +9,9 @@ SELECT [physical_memory_in_use_kb]
 FROM [sys].[dm_os_process_memory]
 "@
 Invoke-Sqlcmd -ServerInstance 192.168.88.117 -Username sa -Password $password -Query $query
+
+#######
+# T-SQL
 #######
 select name, physical_name from sys.master_files
 where database_id < 11
